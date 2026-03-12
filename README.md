@@ -97,4 +97,3 @@ python translate.py -u "[https://link-do-artigo.com](https://link-do-artigo.com)
 
 Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
 
-```
