@@ -1,7 +1,7 @@
 
 #  Universal AI Translator & Formatter
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SEU_USUARIO/universal-ai-translator/blob/main/notebook/Tradutor_Universal.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/felipeandrian/universal-ai-translator/blob/main/notebook/Tradutor_Universal.ipynb)
 
 Um tradutor de artigos web  que combina o poder da **Azure Translator** com a inteligência estética do **Google Gemini 2.5 Flash**.
 
@@ -31,8 +31,56 @@ O fluxo de processamento foi desenhado para ser à prova de falhas:
 4. **Formatting:** A tradução bruta é refinada pelo Gemini 2.0 para ganhar estrutura visual.
 5. **Assembly:** O sistema gera o arquivo `.md` final pronto para publicação.
 
+## 🔑 Como Obter as Chaves de API (Passo a Passo)
+
+Este projeto utiliza duas APIs poderosas. Ambas oferecem camadas gratuitas. Veja como configurar cada uma:
+
+---
+
+### 1. Microsoft Azure Translator (Tradução e Detecção)
+A Azure oferece o nível **F0 (Free)** que permite traduzir até **2 milhões de caracteres por mês** gratuitamente.
+
+1.  **Crie sua conta:** Acesse o [Portal da Azure](https://portal.azure.com/) (é necessário uma conta Microsoft).
+2.  **Crie o Recurso:** No menu de busca no topo, digite `Tradução` (ou `Translator`) e clique em **Criar**.
+3.  **Configurações do Recurso:**
+    * **Assinatura:** Escolha a sua (geralmente "Assinatura do Azure 1").
+    * **Grupo de Recursos:** Clique em "Criar novo" (ex: `rg-translator`).
+    * **Região:** Escolha uma próxima de você (ex: `East US` ou `Brazil South`). **Anote esta região**, você precisará dela no código.
+    * **Nome:** Escolha um nome único (ex: `meu-tradutor-ia`).
+    * **Camada de Preço:** Selecione **Free F0**.
+4.  **Obtenha a Chave:** Após a implantação, clique em **Ir para o recurso**. No menu lateral esquerdo, procure por **Chaves e Ponto de Extremidade**.
+5.  **Copie:** Salve a **Chave 1** e a **Localização/Região**.
 
 
+
+---
+
+### 2. Google Gemini (Refino e Formatação)
+O Google AI Studio permite gerar chaves para o modelo **Gemini 2.5 Flash** de forma simples e rápida.
+
+1.  **Acesse o AI Studio:** Vá para o [Google AI Studio](https://aistudio.google.com/).
+2.  **Login:** Entre com sua conta Google.
+3.  **Gere a Chave:** No menu lateral esquerdo, clique no botão **Get API key**.
+4.  **Criar Projeto:** Clique em **Create API key in new project**.
+5.  **Copie:** Uma janela abrirá com sua chave (uma sequência longa de letras e números). Copie e guarde em um local seguro.
+
+---
+
+##  Onde inserir as chaves?
+
+### No Google Colab (Seguro)
+Não cole as chaves diretamente no código! Use o recurso de **Secrets** do Colab:
+1. Clique no ícone de **Chave (🔑)** na barra lateral esquerda.
+2. Adicione um novo segredo com o nome `AZURE_KEY` e cole o valor da Azure.
+3. Adicione outro com o nome `GEMINI_KEY` e cole o valor do Google.
+4. Ative a opção **Acesso ao Notebook** para ambos.
+
+### Localmente (Arquivo .env)
+Se estiver rodando no seu computador, você pode criar um arquivo `.env` na raiz do projeto:
+```env
+AZURE_KEY=sua_chave_aqui
+GEMINI_KEY=sua_chave_aqui
+```
 ---
 
 ##  Execução via Google Colab (Recomendado)
